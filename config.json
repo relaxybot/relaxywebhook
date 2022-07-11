@@ -1,0 +1,5 @@
+{"params":
+    {   "client_url": "mongodb+srv://relaxybot:tecnica54321@cluster0.sxu9qiv.mongodb.net/?retryWrites=true&w=majority",
+        "db": "chatbot_to_db"
+    }
+}
