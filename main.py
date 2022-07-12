@@ -33,6 +33,7 @@ def webhook():
     data = {"query": query,
             "result": result
     }
+    print(query,result)
     #Scegliamo il record in cui inserire data
     records = db['messages']
     #Inseriamo data
