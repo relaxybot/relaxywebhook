@@ -9,6 +9,13 @@ app = Flask(__name__)
 app.run()
 
 client = MongoClient("mongodb+srv://relaxybot:tecnica54321@cluster0.sxu9qiv.mongodb.net/?retryWrites=true&w=majority")
+
+try:
+    client = MongoClient(uri, connectTimeoutMS=30000, socketTimeoutMS=None)
+    print("Connection successful")
+except:
+    print("Unsuccessful")
+    
 db = client.get_database('chatbot_to_db')
 
 @app.route('/webhook', methods = ['POST','GET'])
