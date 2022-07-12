@@ -1,9 +1,5 @@
 from flask import Flask, Response, request
 from pymongo import MongoClient
-import json
-
-with open('config.json') as file:
-    params = json.load(file)['params']
 
 app = Flask(__name__)
 app.run()
