@@ -1,15 +1,15 @@
-from urllib import response
 from flask import Flask, Response, request
-import pymongo
+from pymongo import MongoClient
 import json
 
 with open('config.json') as file:
     params = json.load(file)['params']
 
 app = Flask(__name__)
+app.run()
 
-client = pymongo.MongoClient(params['client_url'])
-db = client[params['db']]
+client = MongoClient("mongodb+srv://relaxybot:tecnica54321@cluster0.sxu9qiv.mongodb.net/?retryWrites=true&w=majority")
+db = client.get_database('chatbot_to_db')
 
 @app.route('/webhook', methods = ['POST','GET'])
 def webhook():
@@ -20,8 +20,8 @@ def webhook():
             "result": result
     }
 
-    col = db['chat_data']
-    col.insert_one(data)
+    records = db['messages']
+    records.insert_one(data)
     print("data go inserted into db")
 
     return Response(status=200)
